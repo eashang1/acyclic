@@ -1,6 +1,6 @@
 # Acyclic
 -Uses a simple AI (reinforcement learning) approach to translate languages
 
--Implements mathematical techiniques common in natural language proccessesing
+-Implements mathematical techniques common in natural language processing
 
--Read more and try it at: acyclic.me/acyclic.html
+-Read more and try it at: acyclic.me
