@@ -3,4 +3,4 @@
 
 -Implements mathematical techiniques common in natural language proccessesing
 
--Read more and try it at: https://eashang1.github.io/Acyclic/acyclic.html
+-Read more and try it at: acyclic.me/acyclic.html
