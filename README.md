@@ -1,4 +1,4 @@
-# eashang1.github.io
+# Acyclic
 -Uses a simple AI (reinforcement learning) approach to translate languages
 
 -Implements mathematical techiniques common in natural language proccessesing
