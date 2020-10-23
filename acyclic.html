@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Acyclic</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <p>
+      Welcome to Acyclic! I'm a sophomore at Georgia Tech experimenting
+      with using mathematics and algorithms to translate languages. Right now
+      only basic one word translations are availible, but I'm working on
+      improving the algorithms, language options, and datasets.
+    </p>
+
+    <p>
+      <div class="dropdown">
+        <button class="dropbtn">Language</button>
+        <div class="dropdown-content">
+          <!-- <a href="#">English</a> -->
+          <a href="#">Spanish</a>
+          <!-- <a href="#">Indonesian</a> -->
+        </div>
+      </div>
+    </p>
+
+    <p>
+      <input style="font-size:25px", type = "text", size = "50",
+      placeholder="Type a word in English", id = "sentence">
+    </p>
+
+    <p>
+      <script type="text/javascript" src="translate.js"></script>
+      <button class="translate", onclick="solve()">Translate!</button>
+    </p>
+
+    <p>
+      <input id="result", style="font-size:25px", type = "text", size = "50",
+      placeholder="Translated text">
+    </p>
+
+    <script src="papaparse.min.js"></script>
+
+    <h3>Why am I getting an incorrect translation?</h3>
+    <p>
+      Programming a translator comes with the inherent challenge of assigning
+      logical meaning to words, phrases, and other parts of a language.
+      Languages, however, are a human construct. They are often gramatically and
+      syntactically inconsistent and rely heavily on context clues to have
+      meaning. Ever since you were born, you've built an intuition for
+      understanding these clues - whether that be through recognizing the
+      context of a situation, connotations of words, irony, etc. In order to
+      distinguish between the various meanings of a word or phrase, a translator
+      must seek to emulate this intuition. Natural language processing, the
+      field of linguistics and computer science that deals with this challenge,
+      is among the most complex and researched areas of study today.
+    </p>
+
+    <h3>How does this work?</h3>
+    <p>
+      Acyclic uses a reinforcement learning approach to identify words. It
+      creates a bipartite graph where one side has words in English and the
+      other has words in the input language (suppose for the sake of this
+      example that this is Sindarin). Initially the probability a Sindarin
+      word is translated as any speicific English word is equal for all English
+      words. Now suppose there is a pair of sentences in the training set where
+      the word <i>hello</i> appears in the first sentence and <i>suilad</i>
+      appears in the second. Then the weight of the edge between these two words
+      would increase. This, in turn, would increase the chance the words are
+      translated as each other since the probability <i>hello</i> is translated
+      as <i>suilad</i> is the weight of the edge between them divided by the sum
+       of the weights of all edges connected to the <i>hello</i> vertex. This is
+      a general overview of the method I've used, but there are also various
+      optimizations (e.g. edge weights increase more if sentences are
+      shorter, capitalized words aren't changed, etc.).
+    </p>
+
+    <p>
+      As of now, the only training set used is the 1000 parallel sentences data
+       set on Kaggle (https://www.kaggle.com/bryanpark/parallelsents). This is a
+      far smaller corpus than what I'd need to make an accurate translator,
+      which explains why Acyclic currently makes mistakes for all but simple
+      sentences. The small size of the data set, however, lets me better
+      understand the errors and how to improve the program.
+    </p>
+  </body>
+</html>
