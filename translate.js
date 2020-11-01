@@ -30,8 +30,10 @@ function parse()
 function populate(data)
 {
   var text = document.getElementById("sentence").value
+  text = text.toLowerCase()
+
   let graph =  new Map();
-  for (var i = 1; i <= 100; i++)
+  for (var i = 1; i <= 500; i++)
   {
     var english = data[i][8].split(" ");
     var spanish = data[i][10].split(" ");
@@ -39,15 +41,40 @@ function populate(data)
     {
       for (var k = 0; k < spanish.length; k++)
       {
-        graph[english[j]] ||= [];
-        if(typeof graph[english[j]] === 'function')
+        var eng = clean(english[j]);
+        var lang = clean(spanish[j]);
+
+        graph[eng] ||= [];
+        if(typeof graph[eng] === 'function')
         {
-          graph[english[j]] = [];
+          graph[eng] = [];
         }
-        graph[english[j]].push(spanish[k]);
+        graph[eng].push(lang);
       }
     }
   }
+
+  //Formats the word by making it lower case and removing punctuation
+  function clean(word)
+  {
+    word = String(word);
+    word = word.toLowerCase();
+
+    var end = word[word.length-1]
+    if(end == '.' || end == ',' || end == '?' || end == '!')
+    {
+      word = word.substr(0,word.length-1);
+    }
+
+    var begin = word[0]
+    if(begin == '¿' || begin == '¡')
+    {
+      word = word.substr(1,word.length);
+    }
+
+    return word;
+  }
+
 
   graph[text] = graph[text]||[];
 
@@ -63,7 +90,7 @@ function populate(data)
   }
 
 
-  var best = 0, ans = "";
+  var best = 0, ans = "", word = "";
   for (var key in freq)
   {
     console.log(key)
@@ -72,6 +99,17 @@ function populate(data)
     {
       best = freq[key];
       ans = key;
+      word = key;
+    }
+  }
+
+  best *= 0.5;
+  for (var key in freq)
+  {
+    if(freq[key] > best && key != word)
+    {
+      ans += ", ";
+      ans += key;
     }
   }
 
