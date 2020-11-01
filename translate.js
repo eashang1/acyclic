@@ -1,5 +1,6 @@
 function solve()
 {
+  console.clear();
   var sentence = document.getElementById("sentence").value
   var ans = sentence
   if(sentence === "eerfn3rkfn")
