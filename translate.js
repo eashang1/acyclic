@@ -86,7 +86,10 @@ function populate(data)
 
   for (var i = 0; i < graph[text].length; i++)
   {
-    freq[graph[text][i]]++;
+    if(graph[text][i] != "undefined")
+    {
+      freq[graph[text][i]]++;
+    }
   }
 
 
@@ -103,7 +106,7 @@ function populate(data)
     }
   }
 
-  best *= 0.7;
+  best *= 0.6;
   for (var key in freq)
   {
     if(freq[key] > best && key != word)
