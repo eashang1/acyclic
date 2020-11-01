@@ -103,7 +103,7 @@ function populate(data)
     }
   }
 
-  best *= 0.5;
+  best *= 0.7;
   for (var key in freq)
   {
     if(freq[key] > best && key != word)
