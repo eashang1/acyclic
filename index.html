@@ -38,8 +38,21 @@
 
     <p>
       <script type="text/javascript" src="translate.js"></script>
-      <button class="translate", onclick="solve()">Translate!</button>
+      <button id="go", class="translate", onclick="solve()">Translate!</button>
     </p>
+
+    <!-- Allows you to ranslate by pressing "enter" -->
+    <script>
+      var input = document.getElementById("sentence");
+      input.addEventListener("keyup", function(event)
+      {
+        if (event.keyCode === 13)
+          {
+            event.preventDefault();
+            document.getElementById("go").click();
+          }
+      });
+    </script>
 
     <p>
       <input id="result", style="font-size:25px", type = "text", size = "50",
@@ -78,8 +91,11 @@
       as <i>suilad</i> is the weight of the edge between them divided by the sum
        of the weights of all edges connected to the <i>hello</i> vertex. This is
       a general overview of the method I've used, but there are also various
-      optimizations (e.g. edge weights increase more if sentences are
-      shorter, capitalized words aren't changed, etc.).
+      optimizations. For example, words in the data set are preprocessed by
+      removing punctuation and capitalization. Also, if the input word is long
+      enough, short outputs are ignored (otherwise the graph may decide some
+      short, common word, such as an article, is better choice than proper
+      translation).
     </p>
 
     <p>
