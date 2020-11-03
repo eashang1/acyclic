@@ -97,8 +97,16 @@ function populate(data)
   var best = 0, ans = "", word = "";
   for (var key in freq)
   {
+    if(text.length > 4 && key.length < 4)
+    {
+      console.log(key + " (skipped)")
+      console.log(freq[key])
+      continue;
+    }
+
     console.log(key)
     console.log(freq[key])
+
     if(freq[key] > best)
     {
       best = freq[key];
@@ -110,6 +118,11 @@ function populate(data)
   best *= 0.55;
   for (var key in freq)
   {
+    if(text.length > 4 && key.length < 4)
+    {
+      continue;
+    }
+
     if(freq[key] > best && key != word)
     {
       ans += ", ";
