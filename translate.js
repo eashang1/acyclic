@@ -43,7 +43,7 @@ function populate(data)
       for (var k = 0; k < spanish.length; k++)
       {
         var eng = clean(english[j]);
-        var lang = clean(spanish[j]);
+        var lang = clean(spanish[k]);
 
         graph[eng] ||= [];
         if(typeof graph[eng] === 'function')
