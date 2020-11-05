@@ -115,7 +115,7 @@ function populate(data)
     }
   }
 
-  best *= 0.65;
+  best *= 0.72;
   for (var key in freq)
   {
     if(text.length > 4 && key.length < 4)
