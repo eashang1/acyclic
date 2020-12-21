@@ -34,7 +34,7 @@ function populate(data)
   text = text.toLowerCase()
 
   let graph =  new Map();
-  for (var i = 1; i <= 500; i++)
+  for (var i = 1; i <= 1000; i++)
   {
     var english = data[i][8].split(" ");
     var spanish = data[i][10].split(" ");
