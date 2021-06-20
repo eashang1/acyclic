@@ -1,2 +1,2 @@
 # Acyclic
--I play around with approaches to translate languages (with a super small data set)... 
+Website where I experiment with web development and data sets 
